@@ -17,7 +17,7 @@
 </div>
 
 <!-- restaurant list -->
-<div class="container row mt-5 mx-auto">
+<div class="container row my-5 mx-auto">
   {{#each restaurants}}
     <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
       <a href="/restaurants/{{this._id}}" class="text-secondary col">
@@ -37,13 +37,15 @@
               </span>
             </div>
 
-            <div class="text-center pr-4 mr-1 test">
+            <div class="text-center pr-4 mr-2 test">
               <a class="icon mr-2 text-muted" id="edit" href="/restaurants/{{this._id}}/edit">
                 <i class="fas fa-edit"></i>
               </a>
-              <a class="icon text-muted" id="delete" href="/">
-                <i class="fas fa-trash-alt"></i>
-              </a>
+              <form action="/restaurants/{{this._id}}/delete" method="post" style="display: inline;">
+                <button type="submit" style="border: none; background:none">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
             </div>
           </div>
         </div>

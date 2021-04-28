@@ -99,6 +99,15 @@ app.post('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// Delete
+app.post('/restaurants/:id/delete', (req, res) => {
+  const { id } = req.params
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 /* Start and Listen on the server */
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`)
