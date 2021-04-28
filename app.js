@@ -1,9 +1,25 @@
 /* Require package used in the project */
 const express = require('express')
-const app = express()
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
 const { results: restaurantList } = require('./restaurant.json') // 解構賦值
+const app = express()
 const port = 3000
+const db = mongoose.connection
+
+/* Database connection and statement */
+mongoose.connect('mongodb://localhost/restaurants', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
 
 /* Require express-handlebars */
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -20,13 +36,16 @@ app.get('/', (req, res) => {
 
 //search page
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
+  const { keyword } = req.query
+  const trimmedKeyword = keyword.trim().toLowerCase()
   // search by name or category
-  const restaurants = restaurantList.filter( restaurant =>
-      restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) ||
-      restaurant.name_en.toLowerCase().includes(keyword.trim().toLowerCase()) ||
-      restaurant.category.toLowerCase().includes(keyword.trim().toLowerCase())
-  )
+  const restaurants = restaurantList.filter(restaurant => {
+    return (
+      restaurant.name.toLowerCase().includes(trimmedKeyword) ||
+      restaurant.name_en.toLowerCase().includes(trimmedKeyword) ||
+      restaurant.category.toLowerCase().includes(trimmedKeyword)
+    )
+  })
 
   res.render('index', { restaurants, keyword })
 })
