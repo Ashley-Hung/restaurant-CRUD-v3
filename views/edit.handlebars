@@ -1,0 +1,88 @@
+<div class="container h-100 mt-5">
+  <form action="/restaurants/{{restaurant._id}}/edit" method="post">
+    <div class="form-group form-row">
+      <label for="name" class="col-md-2 col-form-label">
+        Name(CH)
+      </label>
+      <div class="col-md-10">
+        <input type="text" name="name" class="form-control" id="name" value="{{restaurant.name}}" required>
+        <small class=" text-muted form-text pl-2">Required</small>
+      </div>
+    </div>
+
+    <div class=" form-group form-row mb-2 align-items-center">
+      <label for="name_en" class="col-md-2 col-form-label">
+        Name(EN)
+      </label>
+      <div class="col-md-10">
+        <input type="text" name="name_en" class="form-control" id="name_en" value="{{restaurant.name_en}}">
+      </div>
+    </div>
+
+    <div class=" form-group form-row mb-2 align-items-center">
+      <label for="category" class="col-md-2 col-form-label">
+        Category
+      </label>
+      <div class="col-md-10">
+        <input type="text" name="category" class="form-control" id="category" value="{{restaurant.category}}">
+      </div>
+    </div>
+
+    <div class="form-group form-row mb-2 align-items-center">
+      <label for="image" class="col-md-2 col-form-label">
+        Image
+      </label>
+      <div class="col-md-10">
+        <input type="text" placeholder="URL" name="image" class="form-control" id="image" value="{{restaurant.image}}">
+      </div>
+    </div>
+
+    <div class="form-group form-row mb-2 align-items-center">
+      <label for="location" class="col-md-2 col-form-label">
+        Location
+      </label>
+      <div class="col-md-10">
+        <input type="text" name="location" class="form-control" id="location" value="{{restaurant.location}}" required>
+        <small class=" text-muted form-text pl-2">Required</small>
+      </div>
+    </div>
+
+    <div class="form-group form-row mb-2 align-items-center">
+      <label for="phone" class="col-md-2 col-form-label">
+        Phone
+      </label>
+      <div class="col-md-10">
+        <input type="tel" name="phone" class="form-control" id="phone" value="{{restaurant.phone}}" required>
+        <small class=" text-muted form-text pl-2">Required</small>
+      </div>
+    </div>
+
+    <div class="form-group form-row mb-2 align-items-center">
+      <label for="google_map" class="col-md-2 col-form-label">
+        Google map
+      </label>
+      <div class="col-md-10">
+        <input type="text" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}">
+      </div>
+    </div>
+
+    <div class="form-group form-row mb-2 align-items-center">
+      <label for="rating" class="col-md-2 col-form-label">
+        Rating
+      </label>
+      <div class="col-md-10">
+        <input type="text" name="rating" class="form-control" id="rating" value="{{restaurant.rating}}">
+      </div>
+    </div>
+
+    {{!-- Description --}}
+    <div class="form-group form-row mb-2 align-items-center">
+      <label for="description" class="col-md-2 col-form-label">Description</label>
+      <div class="col-md-10">
+        <textarea id="description" name="description" class="form-control">{{restaurant.description}}</textarea>
+      </div>
+    </div>
+
+    <button class="btn btn-outline-success mb-5" type="submit">Save</button>
+  </form>
+</div>

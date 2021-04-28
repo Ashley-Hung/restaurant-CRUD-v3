@@ -79,6 +79,18 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.icon:hover {
+  text-decoration: none;
+}
+
+.fa-edit:hover {
+  color: #4592af;
+}
+
+.fa-trash-alt:hover {
+  color: #cc2222;
+}
+
 @media screen and (max-width: 992px) {
   .card img {
     height: 115px;

@@ -17,27 +17,37 @@
 </div>
 
 <!-- restaurant list -->
-<div class="container mt-5">
-  <div class="row row-cols-1 row-cols-md-3">
-    {{#each restaurants}}
+<div class="container row mt-5 mx-auto">
+  {{#each restaurants}}
+    <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
       <a href="/restaurants/{{this._id}}" class="text-secondary col">
-        <div class="card mb-3">
-          <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
-          <div class="card-body p-3">
-            <h6 class="card-title mb-1">{{this.name}}</h6>
+        <div class="card mb-3 h-100">
+          <img class="card-img-top mt-3" src="{{this.image}}" alt="{{this.name}}">
+          <div class="card-body p-2">
+            <h6 class="card-title mb-1 text-center">{{this.name}}</h6>
 
-            <div class="restaurant-category mb-1">
+            <div class="restaurant-category mb-1 text-center">
               <i class="fas fa-utensils pr-2"></i> {{this.category}}
             </div>
 
-            <span class="badge badge-pill badge-danger font-weight-normal">
-              {{this.rating}}
-              <i class="fas fa-star fa-xs"></i>
-            </span>
+            <div class="rating text-center pb-1">
+              <span class="badge badge-pill badge-danger font-weight-normal">
+                {{this.rating}}
+                <i class="fas fa-star fa-xs"></i>
+              </span>
+            </div>
 
+            <div class="text-center pr-4 mr-1 test">
+              <a class="icon mr-2 text-muted" id="edit" href="/restaurants/{{this._id}}/edit">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a class="icon text-muted" id="delete" href="/">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </div>
           </div>
         </div>
       </a>
-    {{/each}}
-  </div>
+    </div>
+  {{/each}}
 </div>
