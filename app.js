@@ -2,6 +2,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const { results: restaurantList } = require('./restaurant.json') // 解構賦值
 const app = express()
 const port = 3000
@@ -21,7 +22,7 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-/* Require express-handlebars */
+/* Setting view engine */
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
