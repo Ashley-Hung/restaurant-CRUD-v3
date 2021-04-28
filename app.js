@@ -3,7 +3,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const { results: restaurantList } = require('./restaurant.json') // 解構賦值
+const Restaurant = require('./models/restaurant')
 const app = express()
 const port = 3000
 const db = mongoose.connection
@@ -32,7 +32,10 @@ app.use(express.static('public'))
 /* Route setting */
 // home page
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
 //search page
