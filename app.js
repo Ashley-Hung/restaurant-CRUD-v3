@@ -40,6 +40,24 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//search page
+app.get('/search', (req, res) => {
+  const { keyword } = req.query
+  const trimmedKeyword = keyword.trim()
+
+  // search by name or category
+  return Restaurant.find({
+    $or: [
+      { name: { $regex: trimmedKeyword, $options: 'i' } }, // i: case-insensitive
+      { name_en: { $regex: trimmedKeyword, $options: 'i' } },
+      { category: { $regex: trimmedKeyword, $options: 'i' } }
+    ]
+  })
+    .lean()
+    .then(restaurants => res.render('index', { restaurants, keyword }))
+    .catch(error => console.log(error))
+})
+
 // Create
 app.get('/restaurants/new', (req, res) => {
   res.render('new')
@@ -50,22 +68,6 @@ app.post('/restaurants', (req, res) => {
   return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
-})
-
-//search page
-app.get('/search', (req, res) => {
-  const { keyword } = req.query
-  const trimmedKeyword = keyword.trim().toLowerCase()
-  // search by name or category
-  const restaurants = restaurantList.filter(restaurant => {
-    return (
-      restaurant.name.toLowerCase().includes(trimmedKeyword) ||
-      restaurant.name_en.toLowerCase().includes(trimmedKeyword) ||
-      restaurant.category.toLowerCase().includes(trimmedKeyword)
-    )
-  })
-
-  res.render('index', { restaurants, keyword })
 })
 
 // Read
