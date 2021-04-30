@@ -1,5 +1,6 @@
 <div class="container h-100 mt-5">
   <form action="/restaurants" method="post">
+    {{!-- Name(CN) --}}
     <div class="form-group form-row">
       <label for="name" class="col-md-2 col-form-label">
         Name(CH)
@@ -10,6 +11,7 @@
       </div>
     </div>
 
+    {{!-- Name(EN) --}}
     <div class=" form-group form-row mb-2 align-items-center">
       <label for="name_en" class="col-md-2 col-form-label">
         Name(EN)
@@ -19,6 +21,7 @@
       </div>
     </div>
 
+    {{!-- Category --}}
     <div class=" form-group form-row mb-2 align-items-center">
       <label for="category" class="col-md-2 col-form-label">
         Category
@@ -28,6 +31,7 @@
       </div>
     </div>
 
+    {{!-- Image --}}
     <div class="form-group form-row mb-2 align-items-center">
       <label for="image" class="col-md-2 col-form-label">
         Image
@@ -37,6 +41,7 @@
       </div>
     </div>
 
+    {{!-- Location --}}
     <div class="form-group form-row mb-2 align-items-center">
       <label for="location" class="col-md-2 col-form-label">
         Location
@@ -74,7 +79,8 @@
         Rating
       </label>
       <div class="col-md-10">
-        <input type="text" name="rating" class="form-control" id="rating">
+        <input type="number" name="rating" placeholder="1 ~ 5" class="form-control" id="rating" step="0.1" min="1.0"
+          max="5.0">
       </div>
     </div>
 

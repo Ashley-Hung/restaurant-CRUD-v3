@@ -41,7 +41,8 @@
               <a class="icon mr-2 text-muted" id="edit" href="/restaurants/{{this._id}}/edit">
                 <i class="fas fa-edit"></i>
               </a>
-              <form action="/restaurants/{{this._id}}/delete" method="post" style="display: inline;" class="pr-4">
+              <form action="/restaurants/{{this._id}}/delete" method="post" style="display: inline;" class="pr-4"
+                onsubmit="return deleteAlert()">
                 <button type="submit" style="border: none; background:none">
                   <i class="fas fa-trash-alt"></i>
                 </button>
