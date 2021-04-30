@@ -1,5 +1,6 @@
 <div class="container h-100 mt-5">
-  <form action="/restaurants/{{restaurant._id}}/edit" method="post">
+  <form action="/restaurants/{{restaurant._id}}/edit" method="post" id="form" novalidate
+    onsubmit="return submitForm(event)">
     <div class="form-group form-row">
       <label for="name" class="col-md-2 col-form-label">
         Name(CH)
@@ -71,7 +72,8 @@
         Rating
       </label>
       <div class="col-md-10">
-        <input type="text" name="rating" class="form-control" id="rating" value="{{restaurant.rating}}">
+        <input type="number" name="rating" class="form-control" id="rating" value="{{restaurant.rating}}" step="0.1"
+          min="1.0" max="5.0">
       </div>
     </div>
 
@@ -83,6 +85,6 @@
       </div>
     </div>
 
-    <button class="btn btn-outline-success mb-5" type="submit">Save</button>
+    <button class="btn btn-outline-success mb-5" type="submit" id="submit" onclick="return clickSubmit()">Save</button>
   </form>
 </div>

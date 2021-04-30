@@ -1,5 +1,5 @@
 <div class="container h-100 mt-5">
-  <form action="/restaurants" method="post">
+  <form action="/restaurants" method="post" id="form" novalidate onsubmit="return submitForm(event)">
     {{!-- Name(CN) --}}
     <div class="form-group form-row">
       <label for="name" class="col-md-2 col-form-label">
@@ -92,6 +92,25 @@
       </div>
     </div>
 
-    <button class="btn btn-outline-success mb-5" type="submit">Create</button>
+    <button class="btn btn-outline-success mb-5" type="submit" id="submit"
+      onclick="return clickSubmit()">Create</button>
   </form>
 </div>
+
+{{!-- <script>
+  const form = document.querySelector('#form')
+  const submitButton = document.querySelector('#submit')
+
+  submitButton.addEventListener('click', event => {
+    form.classList.add('was-validated')
+  })
+
+  form.addEventListener('submit', event => {
+    event.preventDefault()
+    event.stopPropagation()
+    // if (!form.checkValidity()) {
+    //   event.preventDefault()
+    //   event.stopPropagation()
+    // }
+  })
+</script> --}}
