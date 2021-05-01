@@ -30,13 +30,13 @@
 1. clone 此專案至本機電腦
 
    ```
-   $ git clone https://github.com/Ashley-Hung/restaurant-remote.git
+   $ git clone https://github.com/Ashley-Hung/restaurant-CRUD.git
    ```
 
 2. 安裝
 
    ```
-   $ cd restaurant-remote
+   $ cd restaurant-CRUD
    $ npm install
    ```
 
