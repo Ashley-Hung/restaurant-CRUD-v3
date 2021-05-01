@@ -6,9 +6,12 @@
 
 - 可以讓使用者於主畫面上快速瀏覽餐廳圖片、名稱、評分等
 - 使用者可以點進感興趣的餐廳查看更詳細的資訊
-- 可以透過餐廳的中英文名稱或想查找的餐廳類別來搜尋相關的餐廳
+- 透過餐廳的中英文名稱或想查找的餐廳類別來搜尋相關的餐廳
+- 新增餐廳
+- 修改餐廳資訊
+- 刪除餐廳
 
-![demo image](https://github.com/Ashley-Hung/restaurant-remote/blob/master/demo.png)
+![demo image](https://github.com/Ashley-Hung/restaurant-CRUD/blob/master/demo.jpeg)
 
 
 
@@ -17,6 +20,8 @@
 - [Node.js](https://nodejs.org/en/)：14.16.1
 - [Express](https://www.npmjs.com/package/express)：4.17.1
 - [Express-Handlebars](https://www.npmjs.com/package/express-handlebars)：5.3.0
+- [mongoose](https://www.npmjs.com/package/mongoose)：5.12.6
+- [mongoDB](https://www.mongodb.com/try/download/community)：4.2.13
 
 
 
