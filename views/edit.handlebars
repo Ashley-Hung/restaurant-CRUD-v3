@@ -1,5 +1,5 @@
 <div class="container h-100 mt-5">
-  <form action="/restaurants/{{restaurant._id}}/edit" method="post" id="form" novalidate
+  <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="post" id="form" novalidate
     onsubmit="return submitForm(event)">
     <div class="form-group form-row">
       <label for="name" class="col-md-2 col-form-label">
