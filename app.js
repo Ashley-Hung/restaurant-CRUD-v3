@@ -15,7 +15,7 @@ app.engine(
     defaultLayout: 'main',
     helpers: {
       ifEquals: function (select, selectValue, sorting, sortingValue) {
-        return select === selectValue && sorting === sortingValue ? 'selected' : ''
+        return (select === selectValue && sorting === sortingValue) ? 'selected' : ''
       }
     }
   })
