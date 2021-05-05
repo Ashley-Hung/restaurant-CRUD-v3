@@ -22,7 +22,7 @@
   <div class="select-container mt-5 row col-12 justify-content-end">
     <div class=" form-group mb-1">
       <!--  location = the location (URL) of the object it is linked to -->
-      <select class="form-control" id="selector" onchange="location = this.value;">
+      <select class="form-control {{#if keyword}}invisible{{/if}}" id="selector" onchange="location = this.value;">
         <option disabled selected> -- Select here -- </option>
         <option value="/sort/name/asc" {{ifEquals select 'name' sorting 'asc'}}>A - Z</option>
         <option value="/sort/name/desc" {{ifEquals select 'name' sorting 'desc'}}>Z - A</option>
