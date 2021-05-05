@@ -9,7 +9,17 @@ const app = express()
 const port = 3000
 
 /* Setting view engine */
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine(
+  'handlebars',
+  exphbs({
+    defaultLayout: 'main',
+    helpers: {
+      ifEquals: function (select, selectValue, sorting, sortingValue) {
+        return select === selectValue && sorting === sortingValue ? 'selected' : ''
+      }
+    }
+  })
+)
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public')) // setting static files

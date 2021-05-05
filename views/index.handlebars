@@ -17,7 +17,22 @@
 </div>
 
 <!-- restaurant list -->
-<div class="container row my-5 mx-auto">
+<div class="container row mb-5 mx-auto">
+  <!-- select option -->
+  <div class="select-container mt-5 row col-12 justify-content-end">
+    <div class=" form-group mb-1">
+      <!--  location = the location (URL) of the object it is linked to -->
+      <select class="form-control" id="selector" onchange="location = this.value;">
+        <option disabled selected> -- Select here -- </option>
+        <option value="/sort/name/asc" {{ifEquals select 'name' sorting 'asc'}}>A - Z</option>
+        <option value="/sort/name/desc" {{ifEquals select 'name' sorting 'desc'}}>Z - A</option>
+        <option value="/sort/category/asc" {{ifEquals select 'category' sorting 'asc'}}>類別</option>
+        <option value="/sort/rating/desc" {{ifEquals select 'rating' sorting 'desc'}}>評價(高 - 低)</option>
+        <option value="/sort/rating/asc" {{ifEquals select 'rating' sorting 'asc'}}>評價(低 - 高)</option>
+      </select>
+    </div>
+  </div>
+
   {{#each restaurants}}
     <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
       <a href="/restaurants/{{this._id}}" class="text-secondary col">
@@ -54,3 +69,5 @@
     </div>
   {{/each}}
 </div>
+
+<h1 class="test">{{#ifEquals select 'name'}}{{/ifEquals}}</h1>
