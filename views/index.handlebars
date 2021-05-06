@@ -24,44 +24,46 @@
       <!--  location = the location (URL) of the object it is linked to -->
       <select class="form-control {{#if keyword}}invisible{{/if}}" id="selector" onchange="location = this.value;">
         <option disabled selected> -- Select here -- </option>
-        <option value="/sort/name/asc" {{ifEquals select 'name' sorting 'asc'}}>A - Z</option>
-        <option value="/sort/name/desc" {{ifEquals select 'name' sorting 'desc'}}>Z - A</option>
-        <option value="/sort/category/asc" {{ifEquals select 'category' sorting 'asc'}}>類別</option>
-        <option value="/sort/rating/desc" {{ifEquals select 'rating' sorting 'desc'}}>評價(高 - 低)</option>
-        <option value="/sort/rating/asc" {{ifEquals select 'rating' sorting 'asc'}}>評價(低 - 高)</option>
+        <option value="/sort/name/asc" {{ifEquals select 'name' sorting 'asc' }}>A - Z</option>
+        <option value="/sort/name/desc" {{ifEquals select 'name' sorting 'desc' }}>Z - A</option>
+        <option value="/sort/category/asc" {{ifEquals select 'category' sorting 'asc' }}>類別</option>
+        <option value="/sort/rating/desc" {{ifEquals select 'rating' sorting 'desc' }}>評價(高 - 低)</option>
+        <option value="/sort/rating/asc" {{ifEquals select 'rating' sorting 'asc' }}>評價(低 - 高)</option>
       </select>
     </div>
   </div>
 
   {{#each restaurants}}
-    <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+    <div class="text-center col-sm-12 col-md-4 col-lg-4 mb-3">
       <a href="/restaurants/{{this._id}}" class="text-secondary col">
         <div class="card mb-3 h-100">
           <img class="card-img-top mt-3" src="{{this.image}}" alt="{{this.name}}">
           <div class="card-body p-2">
-            <h6 class="card-title mb-1 text-center">{{this.name}}</h6>
+            <h6 class="card-title mb-1 ">{{this.name}}</h6>
 
-            <div class="restaurant-category mb-1 text-center">
+            <div class="restaurant-category mb-1 ">
               <i class="fas fa-utensils pr-2"></i> {{this.category}}
             </div>
 
-            <div class="rating text-center pb-1">
+            <div class="rating  pb-1">
               <span class="badge badge-pill badge-danger font-weight-normal">
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
             </div>
 
-            <div class="text-center">
-              <a class="icon mr-2 text-muted" id="edit" href="/restaurants/{{this._id}}/edit">
-                <i class="fas fa-edit"></i>
-              </a>
-              <form action="/restaurants/{{this._id}}?_method=DELETE" method="post" style="display: inline;"
-                class="pr-4" onsubmit="return deleteAlert()">
-                <button type="submit" style="border: none; background:none">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </form>
+            <div class="container row">
+              <div class="col-12">
+                <a class="icon text-muted mr-2" id="edit" href="/restaurants/{{this._id}}/edit">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <form action="/restaurants/{{this._id}}?_method=DELETE" method="post" style="display: inline;"
+                  onsubmit="return deleteAlert()">
+                  <button type="submit" class="text-muted" style="border: none; background:none">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
