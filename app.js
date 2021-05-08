@@ -14,8 +14,8 @@ app.engine(
   exphbs({
     defaultLayout: 'main',
     helpers: {
-      ifEquals: function (select, selectValue, sorting, sortingValue) {
-        return (select === selectValue && sorting === sortingValue) ? 'selected' : ''
+      ifEquals: function (select, selectValue) {
+        return select === selectValue ? 'selected' : ''
       }
     }
   })

@@ -20,17 +20,21 @@
 <div class="container row mb-5 mx-auto">
   <!-- select option -->
   <div class="select-container mt-5 row col-12 justify-content-end">
-    <div class=" form-group mb-1">
-      <!--  location = the location (URL) of the object it is linked to -->
-      <select class="form-control {{#if keyword}}invisible{{/if}}" id="selector" onchange="location = this.value;">
-        <option disabled selected> -- Select here -- </option>
-        <option value="/restaurants/sort/name/asc" {{ifEquals select 'name' sorting 'asc' }}>A - Z</option>
-        <option value="/restaurants/sort/name/desc" {{ifEquals select 'name' sorting 'desc' }}>Z - A</option>
-        <option value="/restaurants/sort/category/asc" {{ifEquals select 'category' sorting 'asc' }}>類別</option>
-        <option value="/restaurants/sort/rating/desc" {{ifEquals select 'rating' sorting 'desc' }}>評價(高 - 低)</option>
-        <option value="/restaurants/sort/rating/asc" {{ifEquals select 'rating' sorting 'asc' }}>評價(低 - 高)</option>
-      </select>
-    </div>
+    <form action="/sort">
+      <div class=" form-group mb-1">
+        <!--  location = the location (URL) of the object it is linked to -->
+        <select class="form-control" name="select" {{#if keyword}}invisible{{/if}} id="select"
+          onchange="this.form.submit()">
+
+          <option disabled selected> -- Select here -- </option>
+          <option value="name" {{ ifEquals select 'name' }}>A - Z</option>
+          <option value="-name" {{ ifEquals select '-name' }}>Z - A</option>
+          <option value="category" {{ ifEquals select 'category' }}>類別</option>
+          <option value="-rating" {{ ifEquals select '-rating' }}>評價(高 - 低)</option>
+          <option value="rating" {{ ifEquals select 'rating' }}>評價(低 - 高)</option>
+        </select>
+      </div>
+    </form>
   </div>
 
   {{#each restaurants}}
