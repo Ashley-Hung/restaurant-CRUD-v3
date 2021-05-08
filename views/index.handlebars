@@ -24,11 +24,11 @@
       <!--  location = the location (URL) of the object it is linked to -->
       <select class="form-control {{#if keyword}}invisible{{/if}}" id="selector" onchange="location = this.value;">
         <option disabled selected> -- Select here -- </option>
-        <option value="/sort/name/asc" {{ifEquals select 'name' sorting 'asc' }}>A - Z</option>
-        <option value="/sort/name/desc" {{ifEquals select 'name' sorting 'desc' }}>Z - A</option>
-        <option value="/sort/category/asc" {{ifEquals select 'category' sorting 'asc' }}>類別</option>
-        <option value="/sort/rating/desc" {{ifEquals select 'rating' sorting 'desc' }}>評價(高 - 低)</option>
-        <option value="/sort/rating/asc" {{ifEquals select 'rating' sorting 'asc' }}>評價(低 - 高)</option>
+        <option value="/restaurants/sort/name/asc" {{ifEquals select 'name' sorting 'asc' }}>A - Z</option>
+        <option value="/restaurants/sort/name/desc" {{ifEquals select 'name' sorting 'desc' }}>Z - A</option>
+        <option value="/restaurants/sort/category/asc" {{ifEquals select 'category' sorting 'asc' }}>類別</option>
+        <option value="/restaurants/sort/rating/desc" {{ifEquals select 'rating' sorting 'desc' }}>評價(高 - 低)</option>
+        <option value="/restaurants/sort/rating/asc" {{ifEquals select 'rating' sorting 'asc' }}>評價(低 - 高)</option>
       </select>
     </div>
   </div>

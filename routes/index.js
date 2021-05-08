@@ -8,6 +8,6 @@ const router = express.Router()
 router.use('/', home)
 router.use('/restaurants', restaurants)
 router.use('/search', search)
-router.use('/sort', sort)
+router.use('/restaurants/sort', sort)
 
 module.exports = router
