@@ -3,6 +3,35 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 /* Route setting */
+//Search page
+router.get('/search', (req, res) => {
+  const { keyword } = req.query
+  const trimmedKeyword = keyword.trim()
+
+  // search by name or category
+  return Restaurant.find({
+    $or: [
+      { name: { $regex: trimmedKeyword, $options: 'i' } }, // i: case-insensitive
+      { name_en: { $regex: trimmedKeyword, $options: 'i' } },
+      { category: { $regex: trimmedKeyword, $options: 'i' } }
+    ]
+  })
+    .lean()
+    .then(restaurants => res.render('index', { restaurants, keyword }))
+    .catch(error => console.log(error))
+})
+
+// Sort
+router.get('/sort', (req, res) => {
+  const { select } = req.query
+
+  Restaurant.find()
+    .lean()
+    .sort(select)
+    .then(restaurants => res.render('index', { restaurants, select }))
+    .catch(error => console.log(error))
+})
+
 // Create
 router.get('/new', (req, res) => {
   res.render('new')

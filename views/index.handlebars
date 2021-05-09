@@ -2,7 +2,7 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/search">
+      <form action="/restaurants/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
@@ -20,10 +20,10 @@
 <div class="container row mb-5 mx-auto">
   <!-- select option -->
   <div class="select-container mt-5 row col-12 justify-content-end">
-    <form action="/sort">
+    <form action="/restaurants/sort">
       <div class=" form-group mb-1">
         <!--  location = the location (URL) of the object it is linked to -->
-        <select class="form-control" name="select" {{#if keyword}}invisible{{/if}} id="select"
+        <select class="form-control {{#if keyword}}invisible{{/if}}" name="select" id="select"
           onchange="this.form.submit()">
 
           <option disabled selected> -- Select here -- </option>
