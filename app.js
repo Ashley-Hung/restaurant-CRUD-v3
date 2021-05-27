@@ -36,6 +36,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 usePassport(app) // 寫在路由前
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.user = req.user
+  next()
+})
 app.use(routes)
 
 /* Start and Listen on the server */
