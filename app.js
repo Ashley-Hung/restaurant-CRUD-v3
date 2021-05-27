@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const routes = require('./routes') // 引用路由器
+const usePassport = require('./config/passport') // 要在 express-session 以後
 require('./config/mongoose')
 const app = express()
 const port = 3000
@@ -33,7 +34,9 @@ app.use(
 app.use(express.static('public')) // setting static files
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-app.use(routes) // 將 request 導入路由器
+
+usePassport(app) // 寫在路由前
+app.use(routes)
 
 /* Start and Listen on the server */
 app.listen(port, () => {
