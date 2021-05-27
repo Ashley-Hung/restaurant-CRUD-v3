@@ -4,7 +4,8 @@ const db = mongoose.connection
 /* Database connection and statement */
 mongoose.connect('mongodb://localhost/restaurant-list', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 })
 
 db.on('error', () => {

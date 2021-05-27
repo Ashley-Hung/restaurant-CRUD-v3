@@ -27,8 +27,8 @@
           onchange="this.form.submit()">
 
           <option disabled selected> -- Select here -- </option>
-          <option value="name" {{ ifEquals select 'name' }}>A - Z</option>
-          <option value="-name" {{ ifEquals select '-name' }}>Z - A</option>
+          <option value="-name" {{ ifEquals select '-name' }}>A - Z</option>
+          <option value="name" {{ ifEquals select 'name' }}>Z - A</option>
           <option value="category" {{ ifEquals select 'category' }}>類別</option>
           <option value="-rating" {{ ifEquals select '-rating' }}>評價(高 - 低)</option>
           <option value="rating" {{ ifEquals select 'rating' }}>評價(低 - 高)</option>
@@ -75,5 +75,3 @@
     </div>
   {{/each}}
 </div>
-
-<h1 class="test">{{#ifEquals select 'name'}}{{/ifEquals}}</h1>
