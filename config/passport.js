@@ -15,7 +15,7 @@ module.exports = app => {
           if (!user) {
             return done(null, false, { message: 'That email is not registered!' })
           }
-          if (!user.verifyPassword(password)) {
+          if (user.password !== password) {
             return done(null, false, { message: 'Email or Password incorrect.' })
           }
           return done(null, user)
