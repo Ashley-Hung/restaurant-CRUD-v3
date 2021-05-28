@@ -5,12 +5,14 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+
+if (process.env.NODE_ENV !== 'production ') require('dotenv').config()
+
 const routes = require('./routes') // 引用路由器
-const usePassport = require('./config/passport') // 要在 express-session 以後
-const user = require('./models/user')
 require('./config/mongoose')
+const usePassport = require('./config/passport') // 要在 express-session 以後
 const app = express()
-const port = 3000
+const PORT = process.env.PORT
 
 /* Setting view engine */
 app.engine(
@@ -28,7 +30,7 @@ app.set('view engine', 'handlebars')
 
 app.use(
   session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
   })
@@ -49,6 +51,6 @@ app.use((req, res, next) => {
 app.use(routes)
 
 /* Start and Listen on the server */
-app.listen(port, () => {
-  console.log(`Express is listening on localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`App is listening on localhost:${PORT}`)
 })

@@ -79,6 +79,11 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.required {
+  color: red;
+  display: inline;
+}
+
 .icon:hover {
   text-decoration: none;
 }
