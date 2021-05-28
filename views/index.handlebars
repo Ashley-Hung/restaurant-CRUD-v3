@@ -22,13 +22,12 @@
   <div class="select-container mt-5 row col-12 justify-content-end">
     <form action="/restaurants/sort">
       <div class=" form-group mb-1">
-        <!--  location = the location (URL) of the object it is linked to -->
-        <select class="form-control {{#if keyword}}invisible{{/if}}" name="select" id="select"
+        <select class="form-control {{#if keyword}}invisible{{/if}} {{#checkLength restaurants}}invisible{{/checkLength}}" name="select" id="select"
           onchange="this.form.submit()">
 
           <option disabled selected> -- Select here -- </option>
-          <option value="-name" {{ ifEquals select '-name' }}>A - Z</option>
-          <option value="name" {{ ifEquals select 'name' }}>Z - A</option>
+          <option value="name" {{ ifEquals select 'name' }}>A - Z</option>
+          <option value="-name" {{ ifEquals select '-name' }}>Z - A</option>
           <option value="category" {{ ifEquals select 'category' }}>類別</option>
           <option value="-rating" {{ ifEquals select '-rating' }}>評價(高 - 低)</option>
           <option value="rating" {{ ifEquals select 'rating' }}>評價(低 - 高)</option>

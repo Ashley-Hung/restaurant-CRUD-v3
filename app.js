@@ -20,8 +20,13 @@ app.engine(
   exphbs({
     defaultLayout: 'main',
     helpers: {
-      ifEquals: function (select, selectValue) {
+      ifEquals: (select, selectValue, options) => {
+        'use strict'
         return select === selectValue ? 'selected' : ''
+      },
+      checkLength: (restaurants, options) => {
+        'use strict'
+        return restaurants.length < 2 ? options.fn(this) : options.inverse(this)
       }
     }
   })
