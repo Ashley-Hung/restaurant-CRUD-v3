@@ -13,7 +13,7 @@ db.once('open', () => {
       .then(salt => bcrypt.hash(user.password, salt))
       .then(hash => User.create({ name: user.name, email: user.email, password: hash }))
       .then(async user => {
-        // user[0]: restaurant[0~2]; user[1]: restaurant[3~5];
+        // user[0] -> restaurant[0~2]; user[1] -> restaurant[3~5];
         const restaurants = index ? restaurantList.results.slice(3, 6) : restaurantList.results.slice(0, 3)
 
         restaurants.map(restaurant => {

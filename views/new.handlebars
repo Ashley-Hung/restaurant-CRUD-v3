@@ -1,13 +1,18 @@
 <div class="container h-100 mt-5">
+  {{#each errors}}
+    <div class="alert alert-danger text-center form-group mt-3" role="alert" style="letter-spacing: 1px;">
+      {{this.msg}}
+    </div>
+  {{/each}}
+  <small for="title" style="color: red;">*必填欄位</small>
   <form action="/restaurants" method="post" id="form" novalidate onsubmit="return submitForm(event)">
     {{!-- Name(CN) --}}
     <div class="form-group form-row">
       <label for="name" class="col-md-2 col-form-label">
-        Name(CH)
+        Name(CH) <p class="required">*</p>
       </label>
       <div class="col-md-10">
-        <input type="text" name="name" class="form-control" id="name"" required>
-        <small class=" text-muted form-text pl-2">Required</small>
+        <input type="text" name="name" class="form-control" id="name" required>
       </div>
     </div>
 
@@ -44,22 +49,20 @@
     {{!-- Location --}}
     <div class="form-group form-row mb-2 align-items-center">
       <label for="location" class="col-md-2 col-form-label">
-        Location
+        Location <p class="required">*</p>
       </label>
       <div class="col-md-10">
         <input type="text" name="location" class="form-control" id="location" required>
-        <small class=" text-muted form-text pl-2">Required</small>
       </div>
     </div>
 
     {{!-- Phone --}}
     <div class="form-group form-row mb-2 align-items-center">
       <label for="phone" class="col-md-2 col-form-label">
-        Phone
+        Phone <p class="required">*</p>
       </label>
       <div class="col-md-10">
         <input type="tel" name="phone" class="form-control" id="phone" required>
-        <small class=" text-muted form-text pl-2">Required</small>
       </div>
     </div>
 

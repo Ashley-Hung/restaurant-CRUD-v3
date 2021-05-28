@@ -1,4 +1,5 @@
 const express = require('express')
+const { body, validationResult } = require('express-validator')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
@@ -43,14 +44,25 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
-router.post('/', (req, res) => {
-  const userId = req.user._id
-  const restaurant = req.body
+router.post(
+  '/',
+  [
+    body('name').trim().notEmpty().withMessage('name is required'),
+    body('location').trim().notEmpty().withMessage('location is required'),
+    body('phone').trim().notEmpty().withMessage('phone is required')
+  ],
+  (req, res) => {
+    const errors = validationResult(req)
+    const userId = req.user._id
+    const restaurant = req.body
 
-  return Restaurant.create({ ...restaurant, userId })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
+    if (!errors.isEmpty()) res.render('new', { errors: errors.mapped(), restaurant })
+
+    return Restaurant.create({ ...restaurant, userId })
+      .then(() => res.redirect('/'))
+      .catch(error => console.log(error))
+  }
+)
 
 // Read
 router.get('/:id', (req, res) => {
@@ -73,18 +85,29 @@ router.get('/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-router.put('/:id', (req, res) => {
-  const userId = req.user._id
-  const _id = req.params.id
+router.put(
+  '/:id',
+  [
+    body('name').trim().notEmpty().withMessage('name is required'),
+    body('location').trim().notEmpty().withMessage('location is required'),
+    body('phone').trim().notEmpty().withMessage('phone is required')
+  ],
+  (req, res) => {
+    const errors = validationResult(req)
+    const userId = req.user._id
+    const _id = req.params.id
 
-  return Restaurant.findOne({ _id, userId })
-    .then(restaurant => {
-      restaurant = Object.assign(restaurant, req.body)
-      return restaurant.save()
-    })
-    .then(() => res.redirect(`/restaurants/${_id}`))
-    .catch(error => console.log(error))
-})
+    if (!errors.isEmpty()) res.render('edit', { errors: errors.mapped(), restaurant: req.body })
+
+    return Restaurant.findOne({ _id, userId })
+      .then(restaurant => {
+        restaurant = Object.assign(restaurant, req.body)
+        return restaurant.save()
+      })
+      .then(() => res.redirect(`/restaurants/${_id}`))
+      .catch(error => console.log(error))
+  }
+)
 
 // Delete
 router.delete('/:id', (req, res) => {
