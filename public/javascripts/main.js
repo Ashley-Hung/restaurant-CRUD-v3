@@ -5,7 +5,7 @@ function deleteAlert() {
 
 /* Submit form */
 function submitForm(event) {
-  const form = document.querySelector('#form')
+  const form = document.querySelector('.form')
   if (!form.checkValidity()) {
     event.preventDefault()
     event.stopPropagation()
@@ -14,6 +14,6 @@ function submitForm(event) {
 
 /* Click submit button */
 function clickSubmit() {
-  const form = document.querySelector('#form')
+  const form = document.querySelector('.form')
   form.classList.add('was-validated')
 }
