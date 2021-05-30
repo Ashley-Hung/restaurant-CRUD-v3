@@ -13,7 +13,7 @@
 - 刪除餐廳
 - 依照名稱、類別、評分排序
 
-![demo image](https://github.com/Ashley-Hung/restaurant-CRUD/blob/master/demo.png)
+![demo image](https://github.com/Ashley-Hung/restaurant-CRUD-v3/blob/main/demo.png)
 
 
 
