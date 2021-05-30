@@ -12,9 +12,9 @@
 - 修改餐廳資訊
 - 刪除餐廳
 - 依照名稱、類別、評分排序
+👉 Try it on [Heroku](https://guarded-journey-91389.herokuapp.com/users/login)
 
 ![demo image](https://github.com/Ashley-Hung/restaurant-CRUD-v3/blob/main/demo.png)
-
 
 
 ## 建置環境
