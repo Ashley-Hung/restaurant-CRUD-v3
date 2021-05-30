@@ -1,18 +1,21 @@
 <div class="container h-100 mt-5">
   {{#each errors}}
-    <div class="alert alert-danger text-center form-group mt-3" role="alert" style="letter-spacing: 1px;">
+    <div class="alert alert-danger alert-dismissible fade show text-center form-group mt-3" role="alert" style="letter-spacing: 1px;">
       {{this.msg}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×
+      </button>
     </div>
   {{/each}}
   <small for="title" style="color: red;">*必填欄位</small>
-  <form action="/restaurants" method="post" class="form" novalidate onsubmit="return submitForm(event)">
+  <form action="/restaurants" method="post" class="form" onclick="return submitForm()">
     {{!-- Name(CN) --}}
     <div class="form-group form-row">
       <label for="name" class="col-md-2 col-form-label">
         Name(CH) <p class="required">*</p>
       </label>
       <div class="col-md-10">
-        <input type="text" name="name" class="form-control" id="name" required>
+        <input type="text" name="name" class="form-control" id="name" value="{{restaurant.name}}">
       </div>
     </div>
 
@@ -22,7 +25,7 @@
         Name(EN)
       </label>
       <div class="col-md-10">
-        <input type="text" name="name_en" class="form-control" id="name_en">
+        <input type="text" name="name_en" class="form-control" id="name_en" value="{{restaurant.name_en}}">
       </div>
     </div>
 
@@ -32,7 +35,7 @@
         Category
       </label>
       <div class="col-md-10">
-        <input type="text" name="category" class="form-control" id="category">
+        <input type="text" name="category" class="form-control" id="category" value="{{restaurant.category}}">
       </div>
     </div>
 
@@ -42,7 +45,7 @@
         Image
       </label>
       <div class="col-md-10">
-        <input type="text" placeholder="URL" name="image" class="form-control" id="image">
+        <input type="text" placeholder="URL" name="image" class="form-control" id="image" value="{{restaurant.image}}">
       </div>
     </div>
 
@@ -52,7 +55,7 @@
         Location <p class="required">*</p>
       </label>
       <div class="col-md-10">
-        <input type="text" name="location" class="form-control" id="location" required>
+        <input type="text" name="location" class="form-control" id="location" value="{{restaurant.location}}">
       </div>
     </div>
 
@@ -62,7 +65,7 @@
         Phone <p class="required">*</p>
       </label>
       <div class="col-md-10">
-        <input type="tel" name="phone" class="form-control" id="phone" required>
+        <input type="tel" name="phone" class="form-control" id="phone" value="{{restaurant.phone}}">
       </div>
     </div>
 
@@ -72,7 +75,7 @@
         Google map
       </label>
       <div class="col-md-10">
-        <input type="text" name="google_map" class="form-control" id="google_map">
+        <input type="text" name="google_map" class="form-control" id="google_map" value="{{restaurant.google_map}}">
       </div>
     </div>
 
@@ -83,7 +86,7 @@
       </label>
       <div class="col-md-10">
         <input type="number" name="rating" placeholder="1 ~ 5" class="form-control" id="rating" step="0.1" min="1.0"
-          max="5.0">
+          max="5.0" value="{{restaurant.rating}}">
       </div>
     </div>
 
@@ -91,11 +94,10 @@
     <div class="form-group form-row mb-2 align-items-center">
       <label for="description" class="col-md-2 col-form-label">Description</label>
       <div class="col-md-10">
-        <textarea id="description" name="description" class="form-control"></textarea>
+        <textarea id="description" name="description" class="form-control">{{restaurant.description}}</textarea>
       </div>
     </div>
 
-    <button class="btn btn-outline-success mb-5" type="submit" id="submit"
-      onclick="return clickSubmit()">Create</button>
+    <button class="btn btn-outline-success mb-5" type="submit" id="submit">Create</button>
   </form>
 </div>

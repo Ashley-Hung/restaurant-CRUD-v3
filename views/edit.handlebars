@@ -5,8 +5,7 @@
     </div>
   {{/each}}
   <small for="title" style="color: red;">*必填欄位</small>
-  <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="post" id="form" novalidate
-    onsubmit="return submitForm(event)">
+  <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="post" id="form">
     <div class="form-group form-row">
       <label for="name" class="col-md-2 col-form-label">
         Name(CH) <p class="required">*</p>
@@ -88,6 +87,6 @@
       </div>
     </div>
 
-    <button class="btn btn-outline-success mb-5" type="submit" id="submit" onclick="return clickSubmit()">Save</button>
+    <button class="btn btn-outline-success mb-5" type="submit" id="submit">Save</button>
   </form>
 </div>
